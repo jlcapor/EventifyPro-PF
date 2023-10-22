@@ -1,7 +1,11 @@
 import React from 'react';
 
 const AdminFooter = ({}) => {
-	return <div>AdminFooter</div>;
+	return (
+		<div>
+			AdminFooter
+		</div>
+	);
 };
 
 
