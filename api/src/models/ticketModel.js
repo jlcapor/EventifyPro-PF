@@ -27,9 +27,5 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    eventId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
   });
 };
