@@ -1,7 +1,6 @@
 import React from 'react';
 import Container from '../Container';
 import Logo from '../Logo';
-import Search from '../Search/Search';
 import UserMenu from './UserMenu';
 import NavbarMenu from './NavbarMenu';
 
