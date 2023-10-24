@@ -1,7 +1,7 @@
-import { Inter, Nunito } from 'next/font/google'
+import { Nunito } from 'next/font/google'
 import './globals.css'
+import Navbar from '@/components/Navbar/Navbar';
 
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
      <body className={font.className}>
+         <Navbar/>
         <div className="pb-20 pt-28">
             {children}
         </div>
