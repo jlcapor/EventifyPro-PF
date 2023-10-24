@@ -9,8 +9,8 @@ const Cart = () => {
         <Image
           onClick={() => router.push('/cart')}
           src="/images/carrito.png" 
-          height="25" 
-          width="25" 
+          height='30' 
+          width="30" 
           alt="Logo" 
         />
       </div>
