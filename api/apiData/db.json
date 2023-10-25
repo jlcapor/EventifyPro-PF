@@ -49,5 +49,32 @@
       "admin": "Jose Luis",
       "image": "https://www.trbimg.com/img-54a323b0/turbine/os-teatro-broadway-rey-leon-20141230"
     }
+  ],
+ 
+  "EventTypes": [
+    {
+      "id": 1,
+      "name": "Concierto"
+    },
+    {
+      "id": 2,
+      "name": "Stand-up Comedy"
+    },
+    {
+      "id": 3,
+      "name": "Musical Theater"
+    },
+    {
+      "id": 4,
+      "name": "Theater"
+    },
+    {
+      "id": 5,
+      "name": "Sports"
+    },
+    {
+      "id": 6,
+      "name": "Dance show"
+    }
   ]
 }
