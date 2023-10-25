@@ -1,15 +1,11 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("event", {
+  sequelize.define("Events", {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-    },
-    image: {
-      type: DataTypes.STRING,
-      allowNull: false,
     },
     title: {
       type: DataTypes.STRING,
@@ -27,9 +23,13 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     status: {
       type: DataTypes.ENUM("active", "inactive"),
       defaultValue: "active",
     },
-  });
+  },{ timestamps: false });
 };
