@@ -12,15 +12,6 @@ const chargeEventsController = async () => {
   return apiEvents;
 };
 
-const getEventDetailController = async (id) => {
-  const { data } = await axios.get(`${URL}${id}`);
-  // const eventId = await Events.findByPk(id, {});
-  // return eventId;
-
-  return data;
-};
-
 module.exports = {
   chargeEventsController,
-  getEventDetailController,
 };
