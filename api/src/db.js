@@ -26,9 +26,17 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 
 
-const { } = sequelize.models;
+const { Users, Admin, Event, Tickets, EventTypes } = sequelize.models;
 
 // RELACIONES
+Users.hasMany(Tickets)
+Tickets.belongsTo(Users)
+Admin.hasMany(Event)
+Event.belongsTo(Admin)
+Event.hasMany(Tickets)
+Tickets.belongsToMany(Event)
+Event.hasOne(EventTypes)
+EventTypes.belongsToMany(Event)
 
 
 module.exports = {
