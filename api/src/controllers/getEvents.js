@@ -2,7 +2,7 @@ const axios = require("axios");
 
 const URL = "http://localhost:5000/Eventos/";
 
-const chargeEventsController = async () => {
+const getEvents = async () => {
   const apiEvents = (await axios.get(URL)).data;
   // await Event.bulkCreate(apiEvents);
   // const check = Event.findAll();
@@ -12,4 +12,4 @@ const chargeEventsController = async () => {
   return apiEvents;
 };
 
-module.exports = { chargeEventsController };
+module.exports = { getEvents };

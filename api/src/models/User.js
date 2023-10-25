@@ -11,11 +11,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        apelledo: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        username: {
+        lastname: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -27,13 +23,17 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        city: {
+        location: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        telefono: {
+        phone: {
             type: DataTypes.INTEGER,
             allowNull: false
-        } 
-})
+        },
+        isAdmin: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
+}, {timestamps: false})
 }
