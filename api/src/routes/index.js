@@ -3,6 +3,6 @@ const eventRouter = require("./eventRouter");
 
 const router = Router();
 
-router.get("/events", eventRouter);
+router.use("/events", eventRouter);
 
 module.exports = router;

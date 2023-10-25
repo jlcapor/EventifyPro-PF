@@ -8,7 +8,7 @@ async function fetchEvents(){
   console.log(data)
 }
 const EventPage = async() => {
-await fetchEvents()
+  await fetchEvents()
   return (
     <Container>
       <div className="container mx-auto px-6 py-3">
