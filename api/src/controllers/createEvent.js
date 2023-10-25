@@ -2,7 +2,6 @@ const { Events, EventTypes } = require("../db");
 
 async function createEvent(title, location, date, description, image, status, eventType) {
   try {
-    
     const existingEvent = await Events.findOne({ where: { title, date } });
     if (existingEvent) {
       throw new Error("An event with the same name and date already exists");
