@@ -1,0 +1,53 @@
+{
+  "Eventos": [
+    {
+      "id": 1,
+      "title": "El Rey León",
+      "description": "Disfruta en familia del teatro musical El Rey León",
+      "place": "Teatro Rivadavia, Buenos Aires",
+      "date": "03 de marzo 2024",
+      "event-Type": "Teatro Musical",
+      "admin": "Jose Luis",
+      "image": "https://www.trbimg.com/img-54a323b0/turbine/os-teatro-broadway-rey-leon-20141230",
+      "price": {
+        "normal": 5000,
+        "vip": 8000
+      },
+      "estado": "activo"
+    },
+    {
+      "id": 2,
+      "title": "Maria Becerra",
+      "description": "El próximo concierto de Maria Becerra en Buenos Aires",
+      "place": " El Monumental Stadium (River Plate Stadium), Buenos Aires",
+      "date": "03 de marzo 2024",
+      "event-Type": "concierto",
+      "admin": "Jose Luis",
+      "image": "",
+      "ticket": {
+        "price": {
+          "normal": 5000,
+          "vip": 8000
+        },
+        "cantidad": {
+          "normal": 120,
+          "vip": 30
+        },
+        "estado": {
+          "normal": true,
+          "vip": true
+        }
+      }
+    },
+    {
+      "id": 3,
+      "title": "Maria Becerra",
+      "description": "Disfruta en familia del teatro musical El Rey León",
+      "place": "Teatro Rivadavia",
+      "date": "23 de marzo 2024",
+      "event-Type": "Teatro Musical",
+      "admin": "Jose Luis",
+      "image": "https://www.trbimg.com/img-54a323b0/turbine/os-teatro-broadway-rey-leon-20141230"
+    }
+  ]
+}
