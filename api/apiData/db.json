@@ -22,7 +22,7 @@
       "place": " El Monumental Stadium (River Plate Stadium), Buenos Aires",
       "date": "03 de marzo 2024",
       "event-Type": "concierto",
-      "admin": "Jose Luis",
+      "admin": "Carlos",
       "image": "",
       "ticket": {
         "price": {
@@ -41,7 +41,7 @@
     },
     {
       "id": 3,
-      "title": "Maria Becerra",
+      "title": "Festival Rock al Parque",
       "description": "Disfruta en familia del teatro musical El Rey León",
       "place": "Teatro Rivadavia",
       "date": "23 de marzo 2024",

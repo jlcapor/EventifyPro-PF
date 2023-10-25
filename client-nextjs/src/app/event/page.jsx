@@ -2,13 +2,13 @@ import Container from "@/components/Container";
 import EventCards from "@/components/EventCards/EventCards";
 import SearchBar from "@/components/SearchBar/SearchBar";
 
-async function fetchEvents(){
-  const res = await fetch('http://localhost:3001/events');
+ const fetchEvents = async()=>{
+  const res = await fetch('http://localhost:3000/api/event');
   const data = await res.json();
-  console.log(data)
+  return data;
 }
-const EventPage = async() => {
-  await fetchEvents()
+const Events = async() => {
+  const events = await fetchEvents()
   return (
     <Container>
       <div className="container mx-auto px-6 py-3">
@@ -20,12 +20,10 @@ const EventPage = async() => {
       </div>
       <div className="mt-16">
         <h3 className="text-gray-600 text-2xl font-bold">All Events</h3>
-        <EventCards/>
+        <EventCards events={events}/>
       </div>
     </Container>
-     
-   
   );
 }
 
-export default EventPage;
+export default Events;
