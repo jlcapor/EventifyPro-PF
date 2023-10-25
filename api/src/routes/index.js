@@ -1,8 +1,8 @@
 const { Router } = require("express");
-const { chargeEvents } = require("../handlers/eventHandlers");
+const eventRouter = require("./eventRouter");
 
 const router = Router();
 
-router.get("/events", chargeEvents);
+router.get("/events", eventRouter);
 
 module.exports = router;

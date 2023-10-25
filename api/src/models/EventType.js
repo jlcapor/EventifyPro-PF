@@ -1,18 +1,13 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("Admin", {
+  sequelize.define("EventTypes", {
     id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
     name: {
-      type: DataTypes.STRING,
-      unique: true,
-      allowNull: false,
-    },
-    email: {
       type: DataTypes.STRING,
       allowNull: false,
     },

@@ -7,19 +7,22 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     price: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
-    availableQuantity: {
+    stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
-    urlImg: {
+    image: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -27,5 +30,9 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-  });
+    quantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+  },{ timestamps: false });
 };
