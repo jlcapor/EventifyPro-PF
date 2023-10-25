@@ -1,5 +1,6 @@
 const { Router } = require("express");
-const { chargeEvents, getEventDetail } = require("../handlers/eventHandlers");
+const { chargeEvents } = require("../handlers/eventHandlers");
+const { getEventDetail } = require("../handlers/getDetailEventHandler");
 
 const router = Router();
 
