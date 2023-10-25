@@ -2,7 +2,7 @@ import Container from "@/components/Container";
 import EventCards from "@/components/EventCards/EventCards";
 import SearchBar from "@/components/SearchBar/SearchBar";
 
-async function fetchEvents(){
+ const fetchEvents = async()=>{
   const res = await fetch('http://localhost:3000/api/event');
   const data = await res.json();
   return data;
