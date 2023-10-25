@@ -12,6 +12,4 @@ const chargeEventsController = async () => {
   return apiEvents;
 };
 
-module.exports = {
-  chargeEventsController,
-};
+module.exports = { chargeEventsController };
