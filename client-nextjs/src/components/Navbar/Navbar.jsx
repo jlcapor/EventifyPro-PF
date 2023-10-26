@@ -3,7 +3,10 @@ import React from 'react';
 import Container from '../Container';
 import Logo from '../Logo';
 import NavbarMenu from './NavbarMenu';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 const Navbar = () => {
+	const router = useRouter();
 	return ( 
 		<div className="fixed w-full bg-gray-800 z-10 shadow-sm">
 			<div className="py-4 border-b-[1px]">
@@ -16,11 +19,11 @@ const Navbar = () => {
 								<div className="flex items-center justify-between">
 									<div className="text-gray-600 focus:outline-none mx-7 py-1.6 px-6 sm:mx-0">
 										<Image
-										onClick={() => router.push('/cart')}
-										src="/images/carrito.png" 
-										height='25' 
-										width="25" 
-										alt="Logo" 
+											onClick={() => router.push('/cart')}
+											src="/images/carrito.png" 
+											height='25' 
+											width="25" 
+											alt="Logo" 
 										/>
 									</div>
 								</div>

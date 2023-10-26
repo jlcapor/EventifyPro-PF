@@ -7,10 +7,10 @@ const Logo = () => {
     <Image
         onClick={() => router.push('/')}
         className='hidden md:block cursor-pointer'
-        // src="/images/logo.png" 
-        // height="100" 
-        // width="100" 
-        // alt="EventyPro"
+        src="eeeeee" 
+        height="100" 
+        width="100" 
+        alt="EventyPro"
     />
   );
 }
