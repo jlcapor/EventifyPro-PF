@@ -12,6 +12,7 @@ const SearchBar = ({onSearch}) => {
         <input
           type="search"
           onChange={handleChange}
+          value={name}
           className="border-none bg-transparent px-4 py-1 focus:outline-none text-lg w-full"
           placeholder="search ..."
         />
