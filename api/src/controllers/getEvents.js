@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { Event } = require("../db");
 
 const URL = "http://localhost:5000/Eventos/";
 
@@ -12,4 +13,13 @@ const getEvents = async () => {
   return apiEvents;
 };
 
-module.exports = { getEvents };
+const getEventsByName = async (name) => {
+  const eventsFound = await Event.findAll({
+    where: {
+      title: { [Op.Ilike]: `%${name}%` },
+    },
+  });
+  return [...eventsFound];
+};
+
+module.exports = { getEvents, getEventsByName };
