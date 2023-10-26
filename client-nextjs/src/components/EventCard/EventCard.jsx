@@ -8,13 +8,13 @@ const EventCard = ({event}) => {
 				<img className="h-56 lg:h-60 w-full object-cover" src={event.image} alt={event.title}/>
 			</Link>
 			<div className="px-3 py-4 text-center">
-				<h3 className="text-2sm text-gray-950">
-					Basic Level
-				</h3>
+				<h2 className="text-gray-950 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{event.title}</h2>
 			</div>
 			<div className="p-3 ">
+				<h3 className="text-2sm font-bold text-gray-950 text-xl">
+					{event.eventType}
+				</h3>
 				<span className="text-lg text-primary text-center ">{event.date}</span>
-				<h2 className="text-gray-950 font-bold text-2xl mb-3 hover:text-gray-900 hover:cursor-pointer">{event.title}</h2>
 			</div>
 		</div>
 	);

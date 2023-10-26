@@ -4,6 +4,7 @@ module.exports = (sequelize) => {
   sequelize.define("EventTypes", {
     id: {
       type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
     },
     name: {

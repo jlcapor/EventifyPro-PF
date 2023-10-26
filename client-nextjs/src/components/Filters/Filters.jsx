@@ -1,4 +1,4 @@
-'use client';
+
 const Filters = () => {
   return (
     <div className="bg-gray-50 p-4">
