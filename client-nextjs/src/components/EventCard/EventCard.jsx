@@ -5,7 +5,7 @@ const EventCard = ({event}) => {
 	return (
 		<div className="bg-white rounded-lg border shadow-md max-w-xs md:max-w-none overflow-hidden">
 			<Link href={`/event/${event.id}`}>
-				<img className="object-center object-cover h-auto w-full" src={event.image} alt={event.title}/>
+				<img className="h-56 lg:h-60 w-full object-cover" src={event.image} alt={event.title}/>
 			</Link>
 			<div className="p-3">
 				<span className="text-sm text-primary text-center">{event.date}</span>

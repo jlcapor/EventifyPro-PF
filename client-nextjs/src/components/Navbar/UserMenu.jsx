@@ -11,81 +11,11 @@ const UserMenu = () => {
 
   return (
     <div className="relative">
-      <div className="flex flex-row items-center gap-3">
+      <div className="mt-2 sm:mt-0 sm:flex md:order-2">
         <Cart/>
-        <div
-          onClick={()=>{}}
-          className="
-            hidden
-            md:block
-            text-sm
-            font-semibold
-            py-3
-            px-4
-            rounded-full
-            transition
-            cursor-pointer
-            text-white
-          "
-        >
-          EventyPro
-        </div>
-        <div
-        onClick={toggleOpen}
-        className="
-            p-4
-            md:py-1
-            md:px-2
-            py-3
-            px-4
-            border-[1px]
-            border-neutral-200
-            flex
-            flex-row
-            items-center
-            gap-3
-            rounded-full
-            cursor-pointer
-            hover:shadow-md
-            transition
-          "
-        >
-          <AiOutlineMenu/>
-          <div className="hidden md:block">
-            <Avatar/>
-          </div>
-        </div>
+        <button className="rounde mr-3 hidden border border-white py-1.5 px-6 text-center text-sm font-medium text-slate-300 focus:outline-none   md:inline-block rounded-lg">Login</button>
+        <button className="rounde mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none   md:mr-0 md:inline-block rounded-lg">Register</button>
       </div>
-      {isOpen && (
-        <div
-          className="
-            absolute
-            rounded-xl
-            shadow-md
-            w-[40vw]
-            md:w-3/4
-            bg-white
-            overflow-hidden
-            right-0
-            top-12
-            text-sm
-          "
-        >
-          <div className="flex flex-col cursor-pointer">
-              <>
-                <MenuItem
-                  label="Login"
-                  onClick={()=>{}}
-                />
-                <MenuItem
-                  label="Sign up"
-                  onClick={()=>{}}
-                />
-              </>
-
-          </div>
-        </div>
-      )}
     </div>
    );
 }

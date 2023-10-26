@@ -19,7 +19,7 @@ const Events = async() => {
         </div>
       </div>
       <div className="mt-16">
-        <h3 className="text-gray-600 text-2xl font-bold">All Events</h3>
+        <h1 className="text-center text-3xl font-bold text-gray-800">All Events</h1>
         <EventCards events={events}/>
       </div>
     </Container>

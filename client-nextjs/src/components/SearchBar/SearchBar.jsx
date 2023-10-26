@@ -9,7 +9,7 @@ const SearchBar = ({}) => {
 						type="search"
 						className="w-full border-none bg-transparent px-4 py-1 focus:outline-none"
 					/>
-					<button className="m-1 rounded px-2 py-1 font-semibold text-white bg-orange-500 border border-gray-300">
+					<button className="m-1 rounded px-2 py-1 font-semibold text-white bg-gray-500 border border-gray-300">
 						Search 
 					</button>
 				</div>
