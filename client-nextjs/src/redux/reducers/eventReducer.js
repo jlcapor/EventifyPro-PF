@@ -5,6 +5,8 @@ import {
     SEARCH_EVENT_REQUEST,
     SEARCH_EVENT_SUCCESS,
     SEARCH_EVENT_FAILURED,
+    FILTER_EVENTTYPE,
+    FILTER_EVENT_DATE
 } from "../action-type/eventConstans"
 
 const initialState ={
@@ -54,6 +56,19 @@ const eventReducer = (state = initialState , action) => {
                 ...state,
                 loading: true,
 				error: action.payload,
+            }
+        case FILTER_EVENTTYPE:
+            const newFilteredEvent= state.eventsBackup.filter(e=> e.eventType === action.payload);
+            return {
+                ...state,
+                events: newFilteredEvent
+            }
+
+        case FILTER_EVENT_DATE:
+            const newFilteredEventDate= state.eventsBackup.filter(e=> e.date === action.payload);
+            return {
+                ...state,
+                events: newFilteredEventDate
             }
         default:
           return state; 
