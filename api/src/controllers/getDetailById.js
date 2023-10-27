@@ -1,13 +1,34 @@
-const axios = require("axios");
-
-const URL = "http://localhost:5000/Eventos/";
+const { Events, EventTypes } = require("../db");
 
 const getDetailById = async (id) => {
-  const { data } = await axios.get(`${URL}${id}`);
-  // const eventId = await Events.findByPk(id, {});
-  // return eventId;
+  const event = await Events.findAll({
+    where: {
+        id: id
+    },
+    include: {
+      model: EventTypes,
+      attributes: ['name'],
+  }
+})
 
-  return data;
+if (!event || event.length === 0) {
+    throw new Error("This event does not excist");
+}
+
+  const infoEevnt = event.map(event => {
+    return {
+     id: event.id,
+     title: event.title,
+     location: event.location,
+     date: event.date,
+     description: event.description,
+     image: event.image,
+     eventType: event.EventType ? event.EventType.name : null
+    }
+  })
+
+  return  infoEevnt[0]
+
 };
 
 module.exports = {
