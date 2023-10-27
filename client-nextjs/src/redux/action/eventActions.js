@@ -7,8 +7,24 @@ import {
   SEARCH_EVENT_FAILED,
   FILTER_EVENTTYPE,
   FILTER_EVENT_DATE,
+  CREATE_EVENT,
+  GET_EVENTS,
 } from "../action-type/eventConstans";
 import axios from "axios";
+
+export const getEvents = () => {
+  return async (dispatch) => {
+    const { data } = await axios.get("http://localhost:3001/events/");
+    return dispatch({ type: GET_EVENTS, payload: data });
+  };
+};
+
+export const createEvent = (event) => {
+  return async (dispatch) => {
+    const { data } = await axios.post("http://localhost:3001/events/", event);
+    return dispatch({ type: CREATE_EVENT, payload: data });
+  };
+};
 
 export const fetchEvents = () => {
   return async (dispatch) => {

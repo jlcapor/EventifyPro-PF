@@ -1,7 +1,7 @@
 import { Nunito } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
-import { Providers } from "./redux/provider";
+import { Providers } from "@/redux/provider";
 
 export const metadata = {
   title: "Create Next App",

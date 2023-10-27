@@ -1,7 +1,7 @@
 "use client";
 
-import { createEvent } from "@/app/redux/action/eventActions";
-import { getAllEventTypes } from "../../redux/action/eventTypeActions";
+import { createEvent, getEvents } from "../../../redux/action/eventActions";
+import { getAllEventTypes } from "@/redux/action/eventTypeActions";
 import validateForm from "@/utils/validateForm";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ const EventPage = () => {
   const allEventTypes = useSelector(
     (state) => state.eventTypeReducer.eventTypes
   );
+  const allEvents = useSelector((state) => state.eventReducer.events);
   const dispatch = useDispatch();
   const [event, setEvent] = useState({
     title: "",
@@ -25,7 +26,10 @@ const EventPage = () => {
 
   useEffect(() => {
     dispatch(getAllEventTypes());
+    dispatch(getEvents());
   }, []);
+
+  console.log(allEvents);
 
   const handleChange = (e) => {
     setEvent({ ...event, [e.target.name]: e.target.value });
@@ -100,7 +104,7 @@ const EventPage = () => {
       </select>
       <br />
       <span>{errors.eventType}</span>
-      <button>SUBIR</button>
+      <button disabled={handleDisabled()}>SUBIR</button>
     </form>
   );
 };

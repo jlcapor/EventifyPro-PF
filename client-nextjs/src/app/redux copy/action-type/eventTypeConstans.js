@@ -1,1 +1,0 @@
-export const GET_EVENTTYPES = 'GET_EVENTTYPES';
