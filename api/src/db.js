@@ -25,16 +25,16 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 
-const {Users, Events, EventTypes, TicketTypes} = sequelize.models;
+const {Users, Events, EventTypes, Tickets} = sequelize.models;
 
 EventTypes.hasMany(Events);
 Events.belongsTo(EventTypes);
 
-Events.hasMany(TicketTypes);
-TicketTypes.belongsTo(Events);
+Events.hasMany(Tickets);
+Tickets.belongsTo(Events);
 
-// Users.hasMany(TicketTypes);
-// TicketTypes.belongsTo(Users);
+// Users.hasMany(Tickets);
+// Tickets.belongsTo(Users);
 
 
 module.exports = {
