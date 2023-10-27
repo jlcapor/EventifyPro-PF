@@ -1,4 +1,4 @@
-const { createTicketType } = require("../controllers/createTicketType")
+const { createTicket } = require("../controllers/createTicket")
 
 
 const createTicketHandler = async (req, res) => {
@@ -6,7 +6,7 @@ const createTicketHandler = async (req, res) => {
         req.body;
 
     try {
-        const newTicket = await createTicketType(
+        const newTicket = await createTicket(
             name,
             price,
             stock,

@@ -1,6 +1,6 @@
 const { Events, Tickets } = require("../db");
 
-const createTicketType = async (name, price, stock, description, image, state, events) => {
+const createTicket = async (name, price, stock, description, image, state, events) => {
   try {
     const eventInstance = await Events.findOne({
       where: { title: events },
@@ -32,4 +32,4 @@ const createTicketType = async (name, price, stock, description, image, state, e
   }
 };
 
-module.exports = { createTicketType };
+module.exports = { createTicket };
