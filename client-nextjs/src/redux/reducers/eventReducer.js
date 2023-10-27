@@ -4,8 +4,9 @@ import {
   FETCH_EVENT_FAILED,
   SEARCH_EVENT_REQUEST,
   SEARCH_EVENT_SUCCESS,
-  SEARCH_EVENT_FAILED,
-  CREATE_EVENT,
+  SEARCH_EVENT_FAILURED,
+  FILTER_EVENTTYPE,
+  FILTER_EVENT_DATE,
 } from "../action-type/eventConstans";
 
 const initialState = {
@@ -15,8 +16,6 @@ const initialState = {
 };
 const eventReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_EVENT:
-      return { ...state, events: [...state.events, action.payload] };
     case FETCH_EVENT_REQUEST:
       return {
         ...state,
@@ -51,11 +50,28 @@ const eventReducer = (state = initialState, action) => {
         filteredEvents: action.payload,
       };
 
-    case SEARCH_EVENT_FAILED:
+    case SEARCH_EVENT_FAILURED:
       return {
         ...state,
         loading: true,
         error: action.payload,
+      };
+    case FILTER_EVENTTYPE:
+      const newFilteredEvent = state.eventsBackup.filter(
+        (e) => e.eventType === action.payload
+      );
+      return {
+        ...state,
+        events: newFilteredEvent,
+      };
+
+    case FILTER_EVENT_DATE:
+      const newFilteredEventDate = state.eventsBackup.filter(
+        (e) => e.date === action.payload
+      );
+      return {
+        ...state,
+        events: newFilteredEventDate,
       };
     default:
       return state;

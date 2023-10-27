@@ -33,8 +33,8 @@ Events.belongsTo(EventTypes);
 Events.hasMany(Tickets);
 Tickets.belongsTo(Events);
 
-Users.hasMany(Tickets);
-Tickets.belongsTo(Users);
+// Users.hasMany(Tickets);
+// Tickets.belongsTo(Users);
 
 
 module.exports = {

@@ -5,20 +5,10 @@ import {
   SEARCH_EVENT_REQUEST,
   SEARCH_EVENT_SUCCESS,
   SEARCH_EVENT_FAILED,
-  CREATE_EVENT,
+  FILTER_EVENTTYPE,
+  FILTER_EVENT_DATE,
 } from "../action-type/eventConstans";
 import axios from "axios";
-
-export const createEvent = (event) => {
-  return async (dispatch) => {
-    try {
-      const { data } = await axios.post("http://localhost:3001/events/", event);
-      return dispatch({ type: CREATE_EVENT, payload: data });
-    } catch (error) {
-      throw Error(error.response.data.error);
-    }
-  };
-};
 
 export const fetchEvents = () => {
   return async (dispatch) => {
@@ -52,5 +42,19 @@ export const searchEvent = (name) => {
         payload: error.response.data.error,
       });
     }
+  };
+};
+
+export const filterEventType = (name) => {
+  return {
+    type: FILTER_EVENTTYPE,
+    payload: name,
+  };
+};
+
+export const filterEventDate = (name) => {
+  return {
+    type: FILTER_EVENT_DATE,
+    payload: name,
   };
 };
