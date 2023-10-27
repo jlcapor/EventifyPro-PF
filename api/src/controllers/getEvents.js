@@ -1,16 +1,21 @@
 const axios = require("axios");
-const { Event } = require("../db");
+const { Events } = require("../db");
 
 const URL = "http://localhost:5000/Eventos/";
 
 const getEvents = async () => {
-  const apiEvents = (await axios.get(URL)).data;
-  // await Event.bulkCreate(apiEvents);
-  // const check = Event.findAll();
-  // if (check) {
-  //   return "SE CARGARON LOS EVENTOS CORRECTAMENTE EN BDD";
-  // } else return "HUBO UN ERROR PARA CARGAR LOS DATOS EN BDD";
-  return apiEvents;
+  const check = await Events.findAll();
+  if (check.length === 0) {
+    const apiEventsRaw = (await axios.get(URL)).data;
+    const apiEventsNew = apiEventsRaw.map((event) => {
+      const { id, ...rest } = event;
+      return { ...rest };
+    });
+
+    // console.log(apiEventsNew);
+    await Events.bulkCreate(apiEventsNew);
+  }
+  return check;
 };
 
 const getEventsByName = async (name) => {
