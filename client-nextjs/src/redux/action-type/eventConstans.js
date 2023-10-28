@@ -11,3 +11,5 @@ export const FILTER_EVENT_DATE = "FILTER_EVENT_DATE";
 
 export const CREATE_EVENT = "CREATE_EVENT";
 export const GET_EVENTS = "GET_EVENTS";
+
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
