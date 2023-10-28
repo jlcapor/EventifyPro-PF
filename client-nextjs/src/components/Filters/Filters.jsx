@@ -1,5 +1,5 @@
 
-const Filters = ({eventTypes, handleFilterByEventType}) => {
+const Filters = ({eventTypes, handleFilterByEventType, handleFilterEventDate}) => {
 
   const eventTypesOptions = eventTypes.map((eventType) => (
 		<option key={eventType.id} value={eventType.name}>{eventType.name}</option>
@@ -24,6 +24,7 @@ const Filters = ({eventTypes, handleFilterByEventType}) => {
         <input
           type="date"
           className="border p-2 w-full"
+          onChange={handleFilterEventDate}
         />
       </div>
     </div>
