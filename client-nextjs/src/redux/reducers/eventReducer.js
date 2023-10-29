@@ -9,12 +9,16 @@ import {
   FILTER_EVENT_DATE,
   CREATE_EVENT,
   GET_EVENTS,
+  SET_CURRENT_PAGE,
 } from "../action-type/eventConstans";
 
 const initialState = {
   events: [],
   eventsBackup: [],
   filteredEvents: [],
+  pagination: {
+    currentPage: 1,
+  },
 };
 const eventReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -78,6 +82,15 @@ const eventReducer = (state = initialState, action) => {
       return {
         ...state,
         events: newFilteredEventDate,
+      };
+    
+    case SET_CURRENT_PAGE: // Nuevo caso para manejar la acción de paginación
+      return {
+        ...state,
+        pagination: {
+          ...state.pagination,
+          currentPage: action.payload,
+        },
       };
     default:
       return state;

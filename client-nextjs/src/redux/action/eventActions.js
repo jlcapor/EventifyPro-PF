@@ -9,6 +9,7 @@ import {
   FILTER_EVENT_DATE,
   CREATE_EVENT,
   GET_EVENTS,
+  SET_CURRENT_PAGE,
 } from "../action-type/eventConstans";
 import axios from "axios";
 
@@ -72,5 +73,12 @@ export const filterEventDate = (name) => {
   return {
     type: FILTER_EVENT_DATE,
     payload: name,
+  };
+};
+
+export const setCurrentPage = (page) => {
+  return {
+    type: SET_CURRENT_PAGE,
+    payload: page,
   };
 };

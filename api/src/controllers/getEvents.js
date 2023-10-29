@@ -1,5 +1,6 @@
 const axios = require("axios");
 const { Events } = require("../db");
+const { Op } = require("sequelize");
 
 const URL = "http://localhost:5000/Eventos/";
 
