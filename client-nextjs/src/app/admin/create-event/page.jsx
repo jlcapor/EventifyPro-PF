@@ -1,6 +1,6 @@
 "use client";
 
-import { createEvent, getEvents } from "../../../redux/action/eventActions";
+import { createEvent } from "../../../redux/action/eventActions";
 import { getAllEventTypes } from "@/redux/action/eventTypeActions";
 import validateForm from "@/utils/validateForm";
 import { useEffect, useState } from "react";
@@ -10,7 +10,7 @@ const EventPage = () => {
   const allEventTypes = useSelector(
     (state) => state.eventTypeReducer.eventTypes
   );
-  const allEvents = useSelector((state) => state.eventReducer.events);
+
   const dispatch = useDispatch();
   const [event, setEvent] = useState({
     title: "",
@@ -24,12 +24,11 @@ const EventPage = () => {
 
   const [errors, setErrors] = useState({});
 
+  const [message, setMessage] = useState("");
+
   useEffect(() => {
     dispatch(getAllEventTypes());
-    dispatch(getEvents());
   }, []);
-
-  console.log(allEvents);
 
   const handleChange = (e) => {
     setEvent({ ...event, [e.target.name]: e.target.value });
@@ -38,74 +37,136 @@ const EventPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createEvent(event));
+    try {
+      dispatch(createEvent(event));
+      setMessage("You created a new event!");
+      setEvent({
+        title: "",
+        location: "",
+        date: "",
+        description: "",
+        image: "",
+        status: "active",
+        eventType: "",
+      });
+      console.log(event);
+    } catch (error) {
+      setMessage("There is a problem:", error);
+    }
   };
 
   const handleDisabled = () => {
-    if (errors != {}) {
-      for (let error in errors) {
-        if (errors[error] !== "") return true;
-      }
+    for (let error in errors) {
+      if (errors[error] !== "") return true;
     }
     return false;
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>INGRESE DATOS DEL EVENTO:</h2>
-      <label>Titulo:</label>
-      <input
-        name="title"
-        placeholder="Ingrese un titulo..."
-        type="text"
-        onChange={handleChange}
-      />
-      <span>{errors.title}</span>
-      <br />
-      <label>Ubicacion:</label>
-      <input
-        name="location"
-        placeholder="Ingrese la ubicacion..."
-        type="text"
-        onChange={handleChange}
-      />
-      <span>{errors.location}</span>
-      <br />
-      <label>Fecha:</label>
-      <input name="date" type="date" onChange={handleChange} />
-      <span>{errors.date}</span>
-      <br />
-      <label>Descripcion:</label>
-      <input
-        name="description"
-        placeholder="Ingrese una breve descripcion..."
-        type="text"
-        onChange={handleChange}
-      />
-      <span>{errors.description}</span>
-      <br />
-      <label>Imagen:</label>
-      <input
-        name="image"
-        placeholder="Ingrese una URL..."
-        type="url"
-        onChange={handleChange}
-      />
-      <span>{errors.image}</span>
-      <br />
-      <label>Tipo de Evento:</label>
-      <select name="eventType" onChange={handleChange} defaultValue="">
-        <option value="" disabled>
-          Tipo de Evento
-        </option>
-        {allEventTypes?.map((elem) => (
-          <option key={elem.id}>{elem.name}</option>
-        ))}
-      </select>
-      <br />
-      <span>{errors.eventType}</span>
-      <button disabled={handleDisabled()}>SUBIR</button>
-    </form>
+    <div className="flex justify-center items-center h-screen mt-12">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      >
+        <h2 className="text-2xl mb-4">ENTER EVENT DATA</h2>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Title:
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            name="title"
+            placeholder="Enter a title..."
+            type="text"
+            value={event.title}
+            onChange={handleChange}
+          />
+          <span className="text-red-500 text-xs italic">{errors.title}</span>
+          <br />
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Location:
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            name="location"
+            value={event.location}
+            placeholder="Enter a location..."
+            type="text"
+            onChange={handleChange}
+          />
+          <span className="text-red-500 text-xs italic">{errors.location}</span>
+          <br />
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Date:
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            name="date"
+            type="date"
+            value={event.date}
+            onChange={handleChange}
+          />
+          <span className="text-red-500 text-xs italic">{errors.date}</span>
+          <br />
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Description:
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            name="description"
+            placeholder="Enter a brief description..."
+            type="text"
+            value={event.description}
+            onChange={handleChange}
+          />
+          <span className="text-red-500 text-xs italic">
+            {errors.description}
+          </span>
+          <br />
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Image:
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            name="image"
+            placeholder="Enter a URL..."
+            type="url"
+            value={event.image}
+            onChange={handleChange}
+          />
+          <span className="text-red-500 text-xs italic">{errors.image}</span>
+          <br />
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Event Type:
+          </label>
+          <select
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            name="eventType"
+            onChange={handleChange}
+            value={event.eventType}
+          >
+            <option value="">Select Event Type</option>
+            {allEventTypes?.map((elem) => (
+              <option key={elem.id}>{elem.name}</option>
+            ))}
+          </select>
+
+          <span className="text-red-500 text-xs italic">
+            {errors.eventType}
+          </span>
+          <br />
+          {message && (
+            <span className="text-red-500 text-xs italic">{message}</span>
+          )}
+          <button
+            disabled={handleDisabled()}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            SUBMIT
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 
