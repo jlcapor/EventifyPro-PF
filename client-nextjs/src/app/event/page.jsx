@@ -51,23 +51,21 @@ const Events = () => {
   const startIndex = (currentPage - 1) * eventsPerPage;
   const endIndex = startIndex + eventsPerPage;
   const displayedEvents = events.slice(startIndex, endIndex);
-  const eventTypesOptions = eventTypes.map((eventType) => (
-		<option key={eventType.id} value={eventType.id}>{eventType.name}</option>
-	))
   return (
     <Container>
-        <div className="py-8">
+       <div className="py-8">
             <div className="p-4">
                 <h2 className="text-3xl font-bold text-center  text-gray-800 leading-tight">All Events</h2>
             </div>
             <div className="my-2 flex sm:flex-row flex-col justify-center">
                 <div className="flex flex-row mb-1 sm:mb-0">
                     <div className="relative max-w-sm mt-2 sm:mt-0 sm:ml-2">
-                      <select onChange={handleFilterByEventType} className=" h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                      <option value="">Choose EventTypes</option>
-                        {eventTypesOptions}
-                      </select>
-                    </div>
+         <Filters className=" h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500" 
+            eventTypes={eventTypes} 
+            handleFilterByEventType={handleFilterByEventType}
+            handleFilterEventDate={handleFilterEventDate}
+          />
+           </div>
                     <div className="relative max-w-sm mt-2 sm:mt-0 sm:ml-2">
                      <input type="date" onChange={handleFilterEventDate} className="border p-2.5 w-full  block pl-10 py-3  dark:border-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none" placeholder="Select date"/>
                     </div>
@@ -82,7 +80,7 @@ const Events = () => {
                 </div>
             </div>
         </div>
-        <div  style={{  marginLeft: '700px'}}>
+      <div  style={{  marginLeft: '700px'}}>
           <Pagination
             count={totalPages}
             page={currentPage}
