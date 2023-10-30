@@ -64,7 +64,7 @@ const Events = () => {
                 <div className="flex flex-row mb-1 sm:mb-0">
                     <div className="relative max-w-sm mt-2 sm:mt-0 sm:ml-2">
                       <select onChange={handleFilterByEventType} className=" h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                      <option value="">Choose EventTypes</option>
+                      <option value="all">Choose EventTypes</option>
                         {eventTypesOptions}
                       </select>
                     </div>
