@@ -15,7 +15,7 @@ if (!event || event.length === 0) {
     throw new Error("This event does not excist");
 }
 
-  const infoEevnt = event.map(event => {
+  const infoEvent = event.map(event => {
     return {
      id: event.id,
      title: event.title,
@@ -27,7 +27,7 @@ if (!event || event.length === 0) {
     }
   })
 
-  return  infoEevnt[0]
+  return  infoEvent[0]
 
 };
 
