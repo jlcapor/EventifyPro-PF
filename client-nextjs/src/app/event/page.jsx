@@ -51,7 +51,9 @@ const Events = () => {
   const startIndex = (currentPage - 1) * eventsPerPage;
   const endIndex = startIndex + eventsPerPage;
   const displayedEvents = events.slice(startIndex, endIndex);
-
+  const eventTypesOptions = eventTypes.map((eventType) => (
+		<option key={eventType.id} value={eventType.id}>{eventType.name}</option>
+	))
   return (
     <Container>
         <div className="py-8">
