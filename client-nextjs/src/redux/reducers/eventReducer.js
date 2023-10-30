@@ -22,10 +22,15 @@ const initialState = {
     currentPage: 1,
   },
 };
+
 const eventReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_EVENTS:
-      return { ...state, events: action.payload, eventsFilter: action.payload };
+      return {
+        ...state,
+        events: action.payload,
+        eventsFilter: action.payload,
+      };
     case CREATE_EVENT:
       return {
         ...state,
@@ -50,13 +55,11 @@ const eventReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
-
     case SEARCH_EVENT_REQUEST:
       return {
         ...state,
         loading: true,
       };
-
     case SEARCH_EVENT_SUCCESS:
       return {
         ...state,
@@ -64,114 +67,60 @@ const eventReducer = (state = initialState, action) => {
         events: action.payload,
         filteredEventDates: action.payload,
       };
-
     case SEARCH_EVENT_FAILED:
       return {
         ...state,
         loading: true,
         error: action.payload,
       };
-
     case FILTER_EVENT_DATE:
-      let filteredEventDates;
-      const filterArr = state.filteredType.length;
-      if (filterArr === 0) {
-        console.log("No hay filtro");
-        if (!action.payload) {
-          filteredEventDates = state.eventsBackup;
-
-          return {
-            ...state,
-            events: filteredEventDates,
-            doubleFilter: [],
-          };
-        } else {
-          filteredEventDates = state.eventsBackup.filter(
-            (e) => e.date === action.payload
-          );
-
-          return {
-            ...state,
-            events: filteredEventDates,
-            doubleFilter: filteredEventDates,
-          };
-        }
+     
+  
+      let filteredEventsDate;
+  
+      if (!action.payload) {
+        filteredEventsDate = state.eventsBackup;
+      } else if (state.filteredType.length === 0) {
+        filteredEventsDate = state.eventsBackup.filter((event) => event.date === action.payload);
       } else {
-        console.log("Estoy aqui");
-        if (!action.payload) {
-          filteredEventDates = state.filteredType;
-
-          return {
-            ...state,
-            events: filteredEventDates,
-          };
-        } else {
-          filteredEventDates = state.filteredType.filter(
-            (event) => event.date === action.payload
-          );
-
-          return {
-            ...state,
-            events: filteredEventDates,
-          };
-        }
+        filteredEventsDate = state.filteredType.filter((event) => event.date === action.payload);
       }
-
+  
+      return {
+        ...state,
+        events: filteredEventsDate,
+        doubleFilter: filteredEventsDate,
+      };
     case FILTER_EVENTTYPE:
-      let filterEventTypes;
-
-      if (state.doubleFilter.length > 0) {
-        console.log("Tiene un filtro aplicado, toca combinar");
-        if (action.payload === "all") {
-          filterEventTypes = state.doubleFilter;
-
-          return {
-            ...state,
-            events: filterEventTypes,
-          };
-        } else {
-          console.log(state.doubleFilter);
-          filterEventTypes = state.doubleFilter.filter(
-            (event) => event.EventTypeId === parseInt(action.payload)
-          );
-
-          if (filterEventTypes.length === 0) {
-            filterEventTypes = state.doubleFilter;
-            alert("No hay eventos con esas especificaciones");
-            return {
-              ...state,
-              events: filterEventTypes,
-            };
-          }
-
-          return {
-            ...state,
-            events: [...filterEventTypes],
-            filteredType: filterEventTypes,
-          };
-        }
+       
+      const typeId = parseInt(action.payload);
+  
+      if (action.payload === "all") {
+        return {
+          ...state,
+          events: state.eventsBackup,
+        };
       } else {
-        if (action.payload === "all") {
-          filterEventTypes = state.eventsBackup;
-          return {
-            ...state,
-            events: [...filterEventTypes],
-            filteredType: [],
-          };
+        let filterEvents;
+  
+        if (state.doubleFilter.length > 0) {
+          filterEvents = state.doubleFilter.filter((event) => event.EventTypeId === typeId);
         } else {
-          filterEventTypes = state.eventsBackup.filter(
-            (e) => e.EventTypeId === parseInt(action.payload)
-          );
-
-          return {
-            ...state,
-            events: [...filterEventTypes],
-            filteredType: filterEventTypes,
-          };
+          filterEvents = state.eventsBackup.filter((event) => event.EventTypeId === typeId);
         }
+  
+        if (filterEvents.length === 0) {
+          alert("No hay eventos con esas especificaciones");
+          return state;
+        }
+  
+        return {
+          ...state,
+          events: filterEvents,
+          filteredType: filterEvents,
+        };
       }
-
-    case SET_CURRENT_PAGE: // Nuevo caso para manejar la acción de paginación
+    case SET_CURRENT_PAGE:
       return {
         ...state,
         pagination: {
@@ -185,3 +134,4 @@ const eventReducer = (state = initialState, action) => {
 };
 
 export default eventReducer;
+
