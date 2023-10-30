@@ -13,7 +13,6 @@ const getEvents = async () => {
       return { ...rest };
     });
 
-    // console.log(apiEventsNew);
     await Events.bulkCreate(apiEventsNew);
   }
   return check;
@@ -29,7 +28,3 @@ const getEventsByName = async (name) => {
 };
 
 module.exports = { getEvents, getEventsByName };
-
-
-
-module.exports = { getEvents, getEventsByName};
