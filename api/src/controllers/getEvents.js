@@ -1,31 +1,57 @@
-const axios = require("axios");
-const { Events } = require("../db");
-const { Op } = require("sequelize");
-
-const URL = "http://localhost:5000/Eventos/";
+const {Events, EventTypes} = require("../db")
+const { Op } = require('sequelize');
 
 const getEvents = async () => {
-  const check = await Events.findAll();
-  if (check.length === 0) {
-    const apiEventsRaw = (await axios.get(URL)).data;
-    const apiEventsNew = apiEventsRaw.map((event) => {
-      const { id, ...rest } = event;
-      return { ...rest };
-    });
+  const events = await Events.findAll({
+    include: {
+        model: EventTypes,
+        attributes: ['name'],
+    }
+});
 
-    // console.log(apiEventsNew);
-    await Events.bulkCreate(apiEventsNew);
-  }
-  return check;
+const allEvents = events.map(event => {
+    return {
+        id: event.id,
+        title: event.title,
+        location: event.location,
+        date: event.date,
+        description: event.description,
+        image: event.image,
+        eventType: event.EventType ? event.EventType.name : null   //.toString()
+    }
+})
+
+  return allEvents;
 };
+
 
 const getEventsByName = async (name) => {
-  const eventsFound = await Event.findAll({
+  const eventsFound = await Events.findAll({
     where: {
-      title: { [Op.Ilike]: `%${name}%` },
+      title: { [Op.iLike]: `%${name}%`, },
     },
+    include: {
+      model: EventTypes,
+      attributes: ['name'],
+    }
   });
-  return [...eventsFound];
+
+  
+  const allEvents = eventsFound.map(event => {
+    return {
+        id: event.id,
+        title: event.title,
+        location: event.location,
+        date: event.date,
+        description: event.description,
+        image: event.image,
+        eventType: event.EventType ? event.EventType.name : null   //.toString()
+    }
+})
+
+  return allEvents;
 };
 
-module.exports = { getEvents, getEventsByName };
+
+
+module.exports = { getEvents, getEventsByName};
