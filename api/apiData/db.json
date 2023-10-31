@@ -5,7 +5,7 @@
       "title": "El Rey León",
       "description": "Disfruta en familia del teatro musical El Rey León",
       "location": "Teatro Rivadavia, Buenos Aires",
-      "date": "03/03/2024",
+      "date": "2024-03-03",
       "eventType": "Musical Theater",
       "image": "https://www.trbimg.com/img-54a323b0/turbine/os-teatro-broadway-rey-leon-20141230",
       "status": "active"
@@ -15,7 +15,7 @@
       "title": "ABEL PRESENTA “AMORES Y RAREZAS”",
       "description": "Con “Amores y Rarezas” Abel propone un recorrido por todos sus “Amores”",
       "location": "ESTADIO VELEZ SARSFIELD",
-      "date": "18/11/2023",
+      "date": "2023-10-18",
       "eventType": "Concert",
       "image": "https://rosarionuestro.com/wp-content/uploads/2023/07/WhatsApp-Image-2023-07-07-at-11.03.42-800x527.jpg",
       "status": "active"
@@ -25,7 +25,7 @@
       "title": "EXPERIENCIA QUEEN",
       "description": "Los mayores éxitos de Queen en una sola noche",
       "location": "Teatro Rivadavia",
-      "date": "27/11/2023",
+      "date": "2023-11-27",
       "eventType": "Broadway Theater",
       "image": "https://ventas.plateaunotickets.com/img/obras/1440.jpeg",
       "status": "active"
@@ -35,7 +35,7 @@
       "title": "EL OFICIAL GORDILLO",
       "description": "Disfruta en familia del teatro musical El Rey León",
       "location": "Teatro Opera Av.Corrientes 860, Capital Federal",
-      "date": "25/12/2023",
+      "date": "2023-12-25",
       "eventType": "Stand-up Comedy",
       "image": "https://www.elesquiu.com/u/fotografias/m/2020/7/18/f1280x720-347668_479343_5050.jpg",
       "status": "active"
@@ -45,10 +45,20 @@
       "title": "IEB+ ARGENTINA OPEN 2024",
       "description": "¡Ya podés obtener tu abono semanal en esta preventa exclusiva hasta el 13 de agosto o agotar stock.",
       "location": "Buenas Aires LAWN Tennis club, Olleros 1510,  Capital Federal,  Palermo",
-      "date": "25/12/2023",
+      "date": "2023-12-25",
       "eventType": "Tennis",
       "image": "https://argentinaopentennis.com/wp-content/uploads/thegem-logos/logo_f391a203ca4744b13518dcb64655abee_3x.png",
       "status": "active"
+    },
+    {
+      "id": 6,
+      "title": "Polenta",
+      "image": "https://www.tuentrada.com/images/650ae1d81aba9.webp",
+      "location": "Teatro Gran Rex, Buenos Aires",
+      "date": "2023-10-28",
+      "description": "Prohibido el ingreso a Menores de 18 Años",
+      "status": "active",
+      "eventType": "Dance Show"
     }
   ],
 
