@@ -79,8 +79,6 @@ const TicketPage = () => {
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
-         <h2 className="text-2xl mb-4">Add Tickets to your Event!</h2>
-
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Name
@@ -150,6 +148,20 @@ const TicketPage = () => {
           />
           {errors.image && (
             <p className="text-red-500 text-xs italic">{errors.image}</p>
+          )}
+
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Status
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="state"
+            value={ticket.state}
+            onChange={handleChange}
+          />
+          {errors.state && (
+            <p className="text-red-500 text-xs italic">{errors.state}</p>
           )}
 
           <label className="block text-gray-700 text-sm font-bold mb-2">

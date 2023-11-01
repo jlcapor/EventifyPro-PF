@@ -26,8 +26,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     state: {
-      type: DataTypes.ENUM("active", "inactive"),
-      defaultValue: "active",
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     quantity: {
       type: DataTypes.INTEGER,
