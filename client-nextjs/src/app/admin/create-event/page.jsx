@@ -1,7 +1,10 @@
 "use client";
 
 import { createEvent } from "../../../redux/action/eventActions";
-import { getAllEventTypes } from "@/redux/action/eventTypeActions";
+import {
+  createEventType,
+  getAllEventTypes,
+} from "@/redux/action/eventTypeActions";
 import validateForm from "@/utils/validateForm";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -49,7 +52,8 @@ const EventPage = () => {
         status: "active",
         eventType: "",
       });
-      console.log(event);
+
+      //console.log(event);
     } catch (error) {
       setMessage("There is a problem:", error);
     }
@@ -136,6 +140,15 @@ const EventPage = () => {
           />
           <span className="text-red-500 text-xs italic">{errors.image}</span>
           <br />
+          <label>New Event Type:</label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter a new event type"
+            name="eventType"
+            onChange={handleChange}
+            value={event.eventType}
+          />
+          <br />
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Event Type:
           </label>
@@ -159,8 +172,8 @@ const EventPage = () => {
             <span className="text-red-500 text-xs italic">{message}</span>
           )}
           <button
-            disabled={handleDisabled()}
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            disabled={handleDisabled()}
           >
             SUBMIT
           </button>
