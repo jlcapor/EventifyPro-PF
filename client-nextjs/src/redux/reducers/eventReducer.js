@@ -4,17 +4,15 @@ import {
     FETCH_EVENT_FAILED,
     SEARCH_EVENT_REQUEST,
     SEARCH_EVENT_SUCCESS,
-    SEARCH_EVENT_FAILURED,
-    FETCH_EVENT_BY_ID_REQUES,
-    FETCH_EVENT_BY_ID_SUCCESS,
-    FETCH_EVENT_BY_ID_FAILED
+    SEARCH_EVENT_FAILED,
+    FILTER_EVENTTYPE,
+    FILTER_EVENT_DATE
 } from "../action-type/eventConstans"
 
 const initialState ={
     events: [],
     eventsBackup: [],
     filteredEvents:[]
-
 }
 const eventReducer = (state = initialState , action) => {
     switch (action.type) {
@@ -29,7 +27,8 @@ const eventReducer = (state = initialState , action) => {
                 loading: false,
                 error: null,
                 events: action.payload,
-                eventsBackup: action.payload
+                eventsBackup: action.payload,
+                filteredEvents: action.payload
             }
         case FETCH_EVENT_FAILED:
             return {
@@ -53,33 +52,25 @@ const eventReducer = (state = initialState , action) => {
                 filteredEvents: action.payload
             }
         
-        case SEARCH_EVENT_FAILURED:
+        case SEARCH_EVENT_FAILED:
             return {
                 ...state,
                 loading: true,
 				error: action.payload,
             }
-
-        
-        case FETCH_EVENT_BY_ID_REQUES:
-            return{
-                ...state,
-				loading: true,
-            }
-        case FETCH_EVENT_BY_ID_SUCCESS:
+        case FILTER_EVENTTYPE:
+            const newFilteredEvent= state.filteredEvents.filter(e=> e.eventType === action.payload);
             return {
                 ...state,
-                loading: false,
-                events: action.payload,
-                filteredEvents: action.payload
-            }
-        case FETCH_EVENT_BY_ID_FAILED:
-            return {
-                ...state,
-                loading: true,
-				error: action.payload,
+                events: newFilteredEvent
             }
 
+        case FILTER_EVENT_DATE:
+            const newFilteredEventDate= state.filteredEvents.filter(e=> e.date === action.payload);
+            return {
+                ...state,
+                events: newFilteredEventDate
+            }
         default:
           return state; 
     }

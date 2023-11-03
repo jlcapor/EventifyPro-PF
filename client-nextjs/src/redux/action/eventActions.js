@@ -5,9 +5,8 @@ import {
     SEARCH_EVENT_REQUEST,
     SEARCH_EVENT_SUCCESS,
     SEARCH_EVENT_FAILED,
-    FETCH_EVENT_BY_ID_REQUES,
-    FETCH_EVENT_BY_ID_SUCCESS,
-    FETCH_EVENT_BY_ID_FAILED,
+    FILTER_EVENTTYPE,
+    FILTER_EVENT_DATE
 } from "../action-type/eventConstans";
 import axios from 'axios';
 
@@ -43,21 +42,19 @@ export const searchEvent = (name) => {
     }
 }
 
+export const filterEventType = (name) => {
+    return {
+        type: FILTER_EVENTTYPE,
+        payload: name
+     }
+};
 
-export const filterEventById = (id) => {
-    console.log(id)
-    return async (dispatch) =>{
-            dispatch({type: FETCH_EVENT_BY_ID_REQUES})
-        try {
-            const {data} = await axios.get(`http://localhost:3001/events/eventsById/${id}`);
-            dispatch({type: FETCH_EVENT_BY_ID_SUCCESS,  payload : data})
-        } catch (error) {
-            dispatch({
-                type: FETCH_EVENT_BY_ID_FAILED, 
-                payload: error.response.data.error
-            })
-        }
-    }
+
+export const filterEventDate = (name) => {
+    return {
+        type: FILTER_EVENT_DATE,
+        payload: name
+     }
 };
 
 

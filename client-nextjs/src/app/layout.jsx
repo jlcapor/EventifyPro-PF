@@ -1,6 +1,5 @@
 import { Nunito } from 'next/font/google'
 import { Providers } from "@/redux/provider";
-import Navbar from '@/components/Navbar/Navbar';
 import './globals.css'
 
 export const metadata = {
@@ -16,12 +15,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
      <body className={font.className}>
-        <Navbar/>
-        <div className="bg-gray-300 pb-20 pt-28">
-          <Providers>
-            {children}
-          </Providers>
-        </div>
+        <Providers>
+           {children}
+        </Providers>
       </body>
     </html>
   )

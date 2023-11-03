@@ -1,8 +1,11 @@
 import React from 'react';
 
-const FormInput = () => {
-	return <div>FormInput</div>;
-};
-
+const FormInput = ({label,name,type = "text"}) => {
+  return (
+    <div>
+      
+    </div>
+  );
+}
 
 export default FormInput;
