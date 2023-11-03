@@ -5,6 +5,10 @@ import Logo from '../Logo';
 import NavbarMenu from './NavbarMenu';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Login from '@/app/login'; 
+import Logout from '@/app/logout';
+
+
 const Navbar = () => {
 	const router = useRouter();
 	return ( 
@@ -24,13 +28,14 @@ const Navbar = () => {
 											height='25' 
 											width="25" 
 											alt="Logo" 
-										/>
+											/>
 									</div>
 								</div>
-								<button className="rounde mr-3 hidden border border-white py-1.5 px-6 text-center text-sm font-medium text-slate-300 focus:outline-none   md:inline-block rounded-lg">Login</button>
-								<button onClick={() => router.push('/register')}  className="rounde mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none   md:mr-0 md:inline-block rounded-lg">Register</button>
+								
 							</div>
 						</div>
+											<Login/>
+											<Logout/>
 					</div>
 				</Container>
 			</div>
